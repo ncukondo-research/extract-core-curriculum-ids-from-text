@@ -72,3 +72,7 @@ type Output = {
     message: string;
 }
 ```
+
+## Performance Evaluation
+
+The performance of the API was evaluated using data obtained from medical settings. The evaluation data and analysis code are stored in [results/analysis](results/analysis/).
