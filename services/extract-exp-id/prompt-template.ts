@@ -1,0 +1,1 @@
+export {prompt as promptTemplate} from "../../prompts/extract_id_ja";
