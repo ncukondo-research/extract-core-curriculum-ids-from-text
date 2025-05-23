@@ -1,0 +1,42 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "build":{
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "mounts": [
+    "source=renv-cache-${localWorkspaceFolderBasename},target=/home/rstudio/.local/share/renv/cache,type=volume"
+  ],
+  "remoteEnv": {
+    // Explicitly specify the cache directory used by renv
+    "RENV_PATHS_CACHE": "/home/rstudio/.local/share/renv/cache"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "r.rterm.linux": "/usr/local/bin/R",
+        "r.rpath.linux": "/usr/local/bin/R",
+        "r.lsp.path": "/usr/local/bin/R",
+        "r.bracketedPaste": true,
+        "r.sessionWatcher": true,
+        "files.associations": {
+          "*.R": "r",
+          ".Rprofile": "r"
+        }
+      },
+      "extensions": [
+          "ikuyadeu.r",
+          "ms-toolsai.jupyter",
+          "ms-python.python",
+          "ms-toolsai.jupyter",
+          "REditorSupport.r",
+          "quarto.quarto"
+        ]
+      }
+  },
+  "remoteUser": "rstudio",
+  "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh"
+}
