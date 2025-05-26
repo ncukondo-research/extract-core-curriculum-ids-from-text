@@ -4,6 +4,48 @@ First, I will show the objectives that should be experienced.
 
 # Objectives
 
+## Objectives: Symptoms
+
+item,id
+Fever,JlAK6lk
+General malaise,JlAK6lo
+Anorexia,JlAK6ls
+Weight loss,JlAK6lw
+Weight gain,JlAK6l0
+Altered mental status,JlAK6l4
+Syncope,JlAK6l8
+Seizure,JlAK6mA
+Vertigo and dizziness,JlAK6mE
+Edema,JlAK6mI
+Rash,JlAK6mM
+Cough and sputum production,JlAK6mQ
+Blood in sputum and hemoptysis,JlAK6mU
+Dyspnea,JlAK6mY
+Chest pain,JlAK6mc
+Palpitations,JlAK6mg
+Dysphagia,JlAK6mk
+Abdominal pain,JlAK6mo
+Nausea and vomiting,JlAK6ms
+Hematemesis,JlAK6mw
+Melena,JlAK6m0
+Constipation,JlAK6m4
+Diarrhea,JlAK6m8
+Jaundice,JlAK6nA
+Abdominal distention and abdominal mass,JlAK6nE
+Lymphadenopathy,JlAK6nI
+Abnormal urine output/urination,JlAK6nM
+Hematuria,JlAK6nQ
+Menstrual abnormality,JlAK6nU
+Anxiety/depression,JlAK6nY
+Cognitive dysfunction,JlAK6nc
+Headache,JlAK6ng
+Skeletal muscle paralysis/muscle weakness,JlAK6nk
+Gait disturbance,JlAK6no
+Sensory disturbance,JlAK6ns
+Back pain,JlAK6nw
+Arthralgia/joint swelling,JlAK6n0
+
+
 ## Objectives: Major clinical and diagnostic imaging tests
 
 item,id
