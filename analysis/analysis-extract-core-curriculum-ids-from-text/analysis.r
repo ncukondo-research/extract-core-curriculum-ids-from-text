@@ -6,7 +6,7 @@ pacman::p_load(dplyr, purrr, caret, tidyr)
 all_ids <- read.csv("./data/all-ids.csv")
 data <- read.csv("./data/data.csv")
 
-# Function to convert ID string to set
+# Function to convert item_id string to set
 convert_to_set <- function(id_string) {
   if (is.na(id_string)) {
     return(character(0))
@@ -39,13 +39,49 @@ tidy_data <- bind_rows(
     mutate(type = "actual")
 )
 
-# all_idsからitem_idの一致するCategoryとitemを結合
+# Join category and item from all_ids based on matching item_id
 tidy_data <- tidy_data |>
   left_join(all_ids, by = c("item_id" = "id")) |>
   select(record_index, item_id, type, category, item, record_letter_count)
 
+
 # Save tidy_data to CSV
 write.csv(tidy_data, "./results/tidy_data.csv", row.names = FALSE)
+
+# make data_Symptoms,data_Examinations,data_Procedures dataframes from tidy_data
+data_Symptoms <- tidy_data |>
+  filter(category == "Symptoms") |>
+  select(record_index, item_id, type, item, record_letter_count)
+data_Examinations <- tidy_data |>
+  filter(category == "Examinations") |>
+  select(record_index, item_id, type, item, record_letter_count)
+data_Procedures <- tidy_data |>
+  filter(category == "Procedures") |>
+  select(record_index, item_id, type, item, record_letter_count)
+
+
+# Group each dataframe by record_index. For predictions, store items in the prediction column as comma-separated values; for actuals, store items in the actual column as comma-separated values.
+data_Symptoms <- data_Symptoms |>
+  group_by(record_index) |>
+  summarise(prediction = paste(item[type == "prediction"], collapse = ","),
+            actual_by_student = paste(item[type == "actual"], collapse = ","),
+            record_letter_count = first(record_letter_count))
+data_Examinations <- data_Examinations |>
+  group_by(record_index) |>
+  summarise(prediction = paste(item[type == "prediction"], collapse = ","),
+            actual_by_student = paste(item[type == "actual"], collapse = ","),
+            record_letter_count = first(record_letter_count))
+data_Procedures <- data_Procedures |>
+  group_by(record_index) |>
+  summarise(prediction = paste(item[type == "prediction"], collapse = ","),
+            actual_by_student = paste(item[type == "actual"], collapse = ","),
+            record_letter_count = first(record_letter_count))
+
+# Save each dataframe to a CSV file
+write.csv(data_Symptoms, "./results/data_Symptoms.csv", row.names = FALSE)
+write.csv(data_Examinations, "./results/data_Examinations.csv", row.names = FALSE)
+write.csv(data_Procedures, "./results/data_Procedures.csv", row.names = FALSE)
+
 
 # Function to calculate sensitivity, specificity, accuracy, precision, recall, and F1 score for each row
 calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
@@ -83,6 +119,7 @@ results <- pmap_df(list(data$prediction_set, data$actual_set), calculate_metrics
 # Calculate average values
 average_results <- colMeans(results, na.rm = TRUE)
 print(average_results)
+
 
 # Save results to CSV
 write.csv(results, "./results/prediction_accuracy_results.csv", row.names = FALSE)
