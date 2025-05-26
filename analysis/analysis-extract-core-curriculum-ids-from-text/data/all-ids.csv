@@ -1,86 +1,86 @@
-id
-JlAK6lk
-JlAK6lo
-JlAK6ls
-JlAK6lw
-JlAK6l0
-JlAK6l4
-JlAK6l8
-JlAK6mA
-JlAK6mE
-JlAK6mI
-JlAK6mM
-JlAK6mQ
-JlAK6mU
-JlAK6mY
-JlAK6mc
-JlAK6mg
-JlAK6mk
-JlAK6mo
-JlAK6ms
-JlAK6mw
-JlAK6m0
-JlAK6m4
-JlAK6m8
-JlAK6nA
-JlAK6nE
-JlAK6nI
-JlAK6nM
-JlAK6nQ
-JlAK6nU
-JlAK6nY
-JlAK6nc
-JlAK6ng
-JlAK6nk
-JlAK6no
-JlAK6ns
-JlAK6nw
-JlAK6n0
-JkxirwY
-Jli6WW4
-Jli6WW8
-Jli6WXE
-Jli6WXI
-Jli6WXQ
-Jkxir08
-JkxirxY
-Jkxiryk
-JkxirxU
-Jkxirxc
-Jli6TOw
-Jli6TO0
-Jkxirwk
-Jkxirwg
-JkxirxQ
-Jli6Y7U
-Jli6Y7Y
-Jli6Y7c
-JkxirxA
-Jkxirw4
-Jli6aBM
-Jli6aBU
-Jkxirxk
-Jkxirw8
-JlAKx_k
-Jub5cSY
-Jub5cSc
-JlAKx_s
-Jub5dh8
-JlAKx_w
-JlAKx_0
-JlAKyAA
-JlAKyAE
-JlAKyAI
-JlAKyAQ
-JlAKyAU
-JlAKyAY
-Jub5eUA
-JlAKyAc
-JlAKyAg
-JlAKyAk
-JlAKyAs
-JlAKyAw
-JlAKyA0
-JlAKyA4
-JlAKyA8
-JlAKyBA
+category,item,id
+Symptoms,Fever,JlAK6lk
+Symptoms,General malaise,JlAK6lo
+Symptoms,Anorexia,JlAK6ls
+Symptoms,Weight loss,JlAK6lw
+Symptoms,Weight gain,JlAK6l0
+Symptoms,Altered mental status,JlAK6l4
+Symptoms,Syncope,JlAK6l8
+Symptoms,Seizure,JlAK6mA
+Symptoms,Vertigo and dizziness,JlAK6mE
+Symptoms,Edema,JlAK6mI
+Symptoms,Rash,JlAK6mM
+Symptoms,Cough and sputum production,JlAK6mQ
+Symptoms,Blood in sputum and hemoptysis,JlAK6mU
+Symptoms,Dyspnea,JlAK6mY
+Symptoms,Chest pain,JlAK6mc
+Symptoms,Palpitations,JlAK6mg
+Symptoms,Dysphagia,JlAK6mk
+Symptoms,Abdominal pain,JlAK6mo
+Symptoms,Nausea and vomiting,JlAK6ms
+Symptoms,Hematemesis,JlAK6mw
+Symptoms,Melena,JlAK6m0
+Symptoms,Constipation,JlAK6m4
+Symptoms,Diarrhea,JlAK6m8
+Symptoms,Jaundice,JlAK6nA
+Symptoms,Abdominal distention and abdominal mass,JlAK6nE
+Symptoms,Lymphadenopathy,JlAK6nI
+Symptoms,Abnormal urine output/urination,JlAK6nM
+Symptoms,Hematuria,JlAK6nQ
+Symptoms,Menstrual abnormality,JlAK6nU
+Symptoms,Anxiety/depression,JlAK6nY
+Symptoms,Cognitive dysfunction,JlAK6nc
+Symptoms,Headache,JlAK6ng
+Symptoms,Skeletal muscle paralysis/muscle weakness,JlAK6nk
+Symptoms,Gait disturbance,JlAK6no
+Symptoms,Sensory disturbance,JlAK6ns
+Symptoms,Back pain,JlAK6nw
+Symptoms,Arthralgia/joint swelling,JlAK6n0
+Examinations,Full blood count,JkxirwY
+Examinations,Blood biochemistry,Jli6WW4
+Examinations,Coagulation/fibrinolysis,Jli6WW8
+Examinations,Immunoserology tests,Jli6WXE
+Examinations,Urinalysis,Jli6WXI
+Examinations,Stool (fecal) examination,Jli6WXQ
+Examinations,Blood typing (ABO, RhD), blood compatibility test (cross-matching), atypical antibody screening,Jkxir08
+Examinations,Arterial blood gas analysis,JkxirxY
+Examinations,Pregnancy test,Jkxiryk
+Examinations,Microbiological tests (bacterial smear, culture, identification, antibiotic sensitivity test),JkxirxU
+Examinations,Cerebrospinal fluid,Jkxirxc
+Examinations,Pleural fluid analysis,Jli6TOw
+Examinations,Peritoneal fluid analysis,Jli6TO0
+Examinations,Histopathology and cytology (including intraoperative rapid diagnosis),Jkxirwk
+Examinations,Genetic testing and chromosome analysis,Jkxirwg
+Examinations,ECG,JkxirxQ
+Examinations,Lung function tests,Jli6Y7U
+Examinations,Endocrine and metabolic function tests,Jli6Y7Y
+Examinations,Electroencephalography,Jli6Y7c
+Examinations,Ultrasound,JkxirxA
+Examinations,X-ray,Jkxirw4
+Examinations,CT,Jli6aBM
+Examinations,MRI,Jli6aBU
+Examinations,Nuclear medicine examination,Jkxirxk
+Examinations,Endoscopy,Jkxirw8
+Procesures,"Position change, transfer",JlAKx_k
+Procesures,Skin antisepsis,Jub5cSY
+Procesures,Application of topical medications,Jub5cSc
+Procesures,Airway suction,JlAKx_s
+Procesures,Nebulizer,Jub5dh8
+Procesures,Venous blood sampling,JlAKx_w
+Procesures,Peripheral venous catheterization,JlAKx_0
+Procesures,Insertion and extraction of nasogastric tube,JlAKyAA
+Procesures,Insertion and extraction of urinary catheter,JlAKyAE
+Procesures,Intradermal injection,JlAKyAI
+Procesures,Subcutaneous injection,JlAKyAQ
+Procesures,Intramuscular injection,JlAKyAU
+Procesures,Intravenous injection,JlAKyAY
+Procesures,Urinalysis (including pregnancy test),Jub5eUA
+Procesures,Microbiological testing (including gram staining),JlAKyAc
+Procesures,Recording of a 12-lead ECG,JlAKyAg
+Procesures,Rapid bedside ultrasound (including FAST) for cinical decision-making,JlAKyAk
+Procesures,Rapid antigen/pathogen testing,JlAKyAs
+Procesures,Blood glucose test,JlAKyAw
+Procesures,Aseptic technique,JlAKyA0
+Procesures,Surgical hand washing,JlAKyA4
+Procesures,Gowning techniques in the operating room,JlAKyA8
+Procesures,Basic sutures and suture removal,JlAKyBA

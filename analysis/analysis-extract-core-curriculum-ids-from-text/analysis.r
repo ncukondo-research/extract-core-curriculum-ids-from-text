@@ -1,6 +1,6 @@
 # Install and load necessary packages
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(dplyr, purrr, caret)
+pacman::p_load(dplyr, purrr, caret, tidyr)
 
 # Load data
 all_ids <- read.csv("./data/all-ids.csv")
@@ -18,6 +18,34 @@ convert_to_set <- function(id_string) {
 data <- data |>
   mutate(prediction_set = map(prediction, convert_to_set),
          actual_set = map((actual_by_student), convert_to_set))
+
+# Add a sequential record_index
+data <- data |>
+  mutate(record_index = row_number())
+
+
+# Build tidy_data by unnesting prediction_set and actual_set
+tidy_data <- bind_rows(
+  data |>
+    select(record_index, prediction_set, record_letter_count) |>
+    unnest(prediction_set) |>
+    rename(item_id = prediction_set) |>
+    mutate(type = "prediction"),
+
+  data |>
+    select(record_index, actual_set, record_letter_count) |>
+    unnest(actual_set) |>
+    rename(item_id = actual_set) |>
+    mutate(type = "actual")
+)
+
+# all_idsからitem_idの一致するCategoryとitemを結合
+tidy_data <- tidy_data |>
+  left_join(all_ids, by = c("item_id" = "id")) |>
+  select(record_index, item_id, type, category, item, record_letter_count)
+
+# Save tidy_data to CSV
+write.csv(tidy_data, "./results/tidy_data.csv", row.names = FALSE)
 
 # Function to calculate sensitivity, specificity, accuracy, precision, recall, and F1 score for each row
 calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
