@@ -75,4 +75,4 @@ type Output = {
 
 ## Performance Evaluation
 
-The performance of the API was evaluated using data obtained from medical settings. The evaluation data and analysis code are stored in [results/analysis](results/analysis/).
+The performance of the API was evaluated using data obtained from medical settings. The evaluation data and analysis code are stored in [analysis/](analysis/).
