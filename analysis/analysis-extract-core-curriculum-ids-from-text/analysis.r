@@ -72,6 +72,11 @@ cat("Standard deviation of record_letter_count:", sd_count, "\n")
 cat("Min of record_letter_count:", min_count, "\n")
 cat("Max of record_letter_count:", max_count, "\n")
 
+# record_letter_countの95%信頼区間を計算
+t_test_result <- t.test(data$record_letter_count, conf.level = 0.95)
+cat("95% confidence interval for record_letter_count:", 
+    t_test_result$conf.int[1], "to", t_test_result$conf.int[2], "\n")
+
 # Calculate correlation between record_letter_count and sensitivity, specificity
 cor_sensitivity <- cor(data$record_letter_count, results$sensitivity, use = "complete.obs")
 cor_specificity <- cor(data$record_letter_count, results$specificity, use = "complete.obs")
