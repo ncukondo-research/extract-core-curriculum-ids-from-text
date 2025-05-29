@@ -111,7 +111,7 @@ metrics_per_record <- tidy_data |>
 # Calculate the average values for all records
 metrics_average <- metrics_per_record |>
   select(-record_index, -prediction, -actual) |>
-  summarise(across(everything(), mean, na.rm = TRUE)) |>
+  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 
 # Save metrics_per_record to CSV
@@ -148,7 +148,7 @@ write.csv(data_Symptoms, "./results/metrics_Symptoms.csv", row.names = FALSE)
 
 data_Symptoms_average <- data_Symptoms |>
   select(-prediction, -actual) |>
-  summarise(across(everything(), mean, na.rm = TRUE)) |>
+  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 write.csv(data_Symptoms_average, "./results/metrics_Symptoms_average.csv", row.names = FALSE)
 
@@ -169,7 +169,7 @@ data_Examinations <- tidy_data |>
 write.csv(data_Examinations, "./results/metrics_Examinations.csv", row.names = FALSE)
 data_Examinations_average <- data_Examinations |>
   select(-prediction, -actual) |>
-  summarise(across(everything(), mean, na.rm = TRUE)) |>
+  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 write.csv(data_Examinations_average, "./results/metrics_Examinations_average.csv", row.names = FALSE)
 data_Procedures <- tidy_data |>
@@ -189,9 +189,23 @@ data_Procedures <- tidy_data |>
 write.csv(data_Procedures, "./results/metrics_Procedures.csv", row.names = FALSE)
 data_Procedures_average <- data_Procedures |>
   select(-prediction, -actual) |>
-  summarise(across(everything(), mean, na.rm = TRUE)) |>
+  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 write.csv(data_Procedures_average, "./results/metrics_Procedures_average.csv", row.names = FALSE)
+
+# metrics_average,metrics_Symptoms_average,
+# metrics_Examinations_average, metrics_Procedures_averageについてラベルをつけ縦重ねにしてmetrics_all_averageを作成
+# indexは、それぞれ"all", "Symptoms", "Examinations", "Procedures"とする
+metrics_all_average <- bind_rows(
+  metrics_average |> mutate(index = "all"),
+  data_Symptoms_average |> mutate(index = "Symptoms"),
+  data_Examinations_average |> mutate(index = "Examinations"),
+  data_Procedures_average |> mutate(index = "Procedures")
+  ) |>
+  select(-record_index, -record_letter_count) |>
+  relocate(index, .before = 1)
+# Save metrics_all_average to CSV
+write.csv(metrics_all_average, "./results/metrics_all_average.csv", row.names = FALSE)
 
 # Calculate mean, standard deviation, min, max, and 95% confidence interval for letter_count from metrics_per_record and store as a dataframe
 letter_count_summary <- metrics_per_record |>

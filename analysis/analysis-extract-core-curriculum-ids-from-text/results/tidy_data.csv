@@ -1,0 +1,244 @@
+"record_index","item_id","type","category","item","record_letter_count"
+1,"JlAK6nk","prediction","Symptoms","Skeletal muscle paralysis/muscle weakness",734
+1,"JlAK6no","prediction","Symptoms","Gait disturbance",734
+1,"JlAK6ns","prediction","Symptoms","Sensory disturbance",734
+2,"Jli6Y7Y","prediction","Examinations","Endocrine and metabolic function tests",580
+3,"JlAK6lk","prediction","Symptoms","Fever",939
+4,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",340
+5,"JlAK6mA","prediction","Symptoms","Seizure",373
+5,"Jli6Y7c","prediction","Examinations","Electroencephalography",373
+5,"Jli6aBU","prediction","Examinations","MRI",373
+6,"JlAK6nk","prediction","Symptoms","Skeletal muscle paralysis/muscle weakness",449
+6,"JlAK6no","prediction","Symptoms","Gait disturbance",449
+6,"JlAK6ns","prediction","Symptoms","Sensory disturbance",449
+7,"JlAK6ls","prediction","Symptoms","Anorexia",1217
+7,"JlAK6nE","prediction","Symptoms","Abdominal distention and abdominal mass",1217
+7,"JkxirxA","prediction","Examinations","Ultrasound",1217
+8,"JlAKx_w","prediction","Procedures","Venous blood sampling",461
+9,"JlAKyAk","prediction","Procedures","Rapid bedside ultrasound (including FAST) for cinical decision-making",392
+9,"JkxirxA","prediction","Examinations","Ultrasound",392
+10,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",455
+11,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",121
+12,"JlAKx_w","prediction","Procedures","Venous blood sampling",685
+12,"Jkxiryk","prediction","Examinations","Pregnancy test",685
+13,"JlAKyA4","prediction","Procedures","Surgical hand washing",493
+13,"JlAKyA8","prediction","Procedures","Gowning techniques in the operating room",493
+13,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",493
+14,"Jkxiryk","prediction","Examinations","Pregnancy test",157
+14,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",157
+15,"JlAKyA4","prediction","Procedures","Surgical hand washing",112
+16,"JkxirxU","prediction","Examinations","Microbiological tests (bacterial smear, culture, identification, antibiotic sensitivity test)",965
+16,"Jkxirxk","prediction","Examinations","Nuclear medicine examination",965
+16,"JlAK6lo","prediction","Symptoms","General malaise",965
+16,"JlAK6mQ","prediction","Symptoms","Cough and sputum production",965
+16,"JlAK6mY","prediction","Symptoms","Dyspnea",965
+16,"JlAK6mo","prediction","Symptoms","Abdominal pain",965
+16,"JlAK6ms","prediction","Symptoms","Nausea and vomiting",965
+16,"JlAK6nM","prediction","Symptoms","Abnormal urine output/urination",965
+17,"JlAKyA4","prediction","Procedures","Surgical hand washing",119
+18,"JlAK6lk","prediction","Symptoms","Fever",1473
+18,"Jli6WXI","prediction","Examinations","Urinalysis",1473
+18,"JkxirxU","prediction","Examinations","Microbiological tests (bacterial smear, culture, identification, antibiotic sensitivity test)",1473
+18,"JlAK6ms","prediction","Symptoms","Nausea and vomiting",1473
+18,"JlAK6nQ","prediction","Symptoms","Hematuria",1473
+19,"JlAKyAw","prediction","Procedures","Blood glucose test",393
+19,"Jli6Y7Y","prediction","Examinations","Endocrine and metabolic function tests",393
+20,"JlAK6nc","prediction","Symptoms","Cognitive dysfunction",454
+21,"JlAK6mc","prediction","Symptoms","Chest pain",79
+22,"JlAKyA4","prediction","Procedures","Surgical hand washing",312
+22,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",312
+23,"JlAK6nc","prediction","Symptoms","Cognitive dysfunction",637
+23,"JlAK6nM","prediction","Symptoms","Abnormal urine output/urination",637
+23,"Jli6WXI","prediction","Examinations","Urinalysis",637
+24,"JlAK6mY","prediction","Symptoms","Dyspnea",181
+25,"JlAKyA8","prediction","Procedures","Gowning techniques in the operating room",73
+26,"JkxirwY","prediction","Examinations","Full blood count",609
+26,"Jli6WW4","prediction","Examinations","Blood biochemistry",609
+27,"Jli6aBM","prediction","Examinations","CT",428
+27,"Jli6aBU","prediction","Examinations","MRI",428
+27,"Jkxirw4","prediction","Examinations","X-ray",428
+28,"Jli6Y7Y","prediction","Examinations","Endocrine and metabolic function tests",261
+29,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",77
+30,"JlAK6lw","prediction","Symptoms","Weight loss",667
+30,"JlAK6nk","prediction","Symptoms","Skeletal muscle paralysis/muscle weakness",667
+31,"JkxirxA","prediction","Examinations","Ultrasound",671
+31,"Jkxirw8","prediction","Examinations","Endoscopy",671
+32,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",82
+33,"Jub5cSY","prediction","Procedures","Skin antisepsis",126
+33,"JlAKx_k","prediction","Procedures","Position change, transfer",126
+34,"JlAK6nw","prediction","Symptoms","Back pain",471
+35,"JkxirxY","prediction","Examinations","Arterial blood gas analysis",1358
+35,"JlAKx_0","prediction","Procedures","Peripheral venous catheterization",1358
+35,"JlAKyAA","prediction","Procedures","Insertion and extraction of nasogastric tube",1358
+35,"JlAKyAE","prediction","Procedures","Insertion and extraction of urinary catheter",1358
+35,"JlAKyA0","prediction","Procedures","Aseptic technique",1358
+35,"JlAKyA4","prediction","Procedures","Surgical hand washing",1358
+35,"JlAKyA8","prediction","Procedures","Gowning techniques in the operating room",1358
+35,"JlAKyBA","prediction","Procedures","Basic sutures and suture removal",1358
+36,"JlAK6l0","prediction","Symptoms","Weight gain",214
+36,"Jli6Y7Y","prediction","Examinations","Endocrine and metabolic function tests",214
+36,"JlAKyAw","prediction","Procedures","Blood glucose test",214
+37,"Jkxirw8","prediction","Examinations","Endoscopy",239
+38,"Jkxirw4","prediction","Examinations","X-ray",165
+39,"JlAK6mo","prediction","Symptoms","Abdominal pain",152
+40,"Jub5cSY","prediction","Procedures","Skin antisepsis",134
+1,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",734
+1,"JlAK6no","actual","Symptoms","Gait disturbance",734
+1,"JlAK6ns","actual","Symptoms","Sensory disturbance",734
+2,"Jli6Y7Y","actual","Examinations","Endocrine and metabolic function tests",580
+3,"JlAK6lk","actual","Symptoms","Fever",939
+4,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",340
+5,"JlAKyA0","actual","Procedures","Aseptic technique",373
+5,"Jli6Y7c","actual","Examinations","Electroencephalography",373
+5,"Jli6aBU","actual","Examinations","MRI",373
+5,"JlAK6l0","actual","Symptoms","Weight gain",373
+5,"JlAK6mA","actual","Symptoms","Seizure",373
+6,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",449
+6,"JlAK6no","actual","Symptoms","Gait disturbance",449
+6,"JlAK6ns","actual","Symptoms","Sensory disturbance",449
+7,"JlAK6mg","actual","Symptoms","Palpitations",1217
+7,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",1217
+8,"JlAKx_w","actual","Procedures","Venous blood sampling",461
+9,"Jub5cSY","actual","Procedures","Skin antisepsis",392
+9,"JlAKyAk","actual","Procedures","Rapid bedside ultrasound (including FAST) for cinical decision-making",392
+9,"JlAKyA0","actual","Procedures","Aseptic technique",392
+9,"JlAKyA4","actual","Procedures","Surgical hand washing",392
+9,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",392
+9,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",392
+9,"JkxirxA","actual","Examinations","Ultrasound",392
+9,"JlAK6lk","actual","Symptoms","Fever",392
+9,"JlAK6m8","actual","Symptoms","Diarrhea",392
+10,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",455
+11,"JlAKyA4","actual","Procedures","Surgical hand washing",121
+11,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",121
+11,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",121
+11,"JkxirwY","actual","Examinations","Full blood count",121
+11,"Jli6WW4","actual","Examinations","Blood biochemistry",121
+11,"Jli6WW8","actual","Examinations","Coagulation/fibrinolysis",121
+11,"Jkxirwk","actual","Examinations","Histopathology and cytology (including intraoperative rapid diagnosis)",121
+11,"Jkxirw4","actual","Examinations","X-ray",121
+11,"Jli6aBM","actual","Examinations","CT",121
+11,"Jli6aBU","actual","Examinations","MRI",121
+11,"JlAK6lo","actual","Symptoms","General malaise",121
+11,"JlAK6lw","actual","Symptoms","Weight loss",121
+12,"JlAKx_w","actual","Procedures","Venous blood sampling",685
+13,"JlAKyA4","actual","Procedures","Surgical hand washing",493
+13,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",493
+13,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",493
+14,"JlAKx_k","actual","Procedures","Position change, transfer",157
+14,"JlAKyAE","actual","Procedures","Insertion and extraction of urinary catheter",157
+14,"JlAKyA4","actual","Procedures","Surgical hand washing",157
+14,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",157
+14,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",157
+14,"Jkxirwk","actual","Examinations","Histopathology and cytology (including intraoperative rapid diagnosis)",157
+14,"Jli6aBU","actual","Examinations","MRI",157
+14,"JlAK6nE","actual","Symptoms","Abdominal distention and abdominal mass",157
+15,"JlAKyA4","actual","Procedures","Surgical hand washing",112
+15,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",112
+15,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",112
+15,"JkxirwY","actual","Examinations","Full blood count",112
+15,"Jli6WW4","actual","Examinations","Blood biochemistry",112
+15,"Jkxirwk","actual","Examinations","Histopathology and cytology (including intraoperative rapid diagnosis)",112
+15,"JkxirxA","actual","Examinations","Ultrasound",112
+15,"Jkxirw4","actual","Examinations","X-ray",112
+16,"JlAK6lo","actual","Symptoms","General malaise",965
+16,"JlAK6mI","actual","Symptoms","Edema",965
+17,"JlAKyA0","actual","Procedures","Aseptic technique",119
+17,"JlAKyA4","actual","Procedures","Surgical hand washing",119
+17,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",119
+17,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",119
+17,"JlAK6mQ","actual","Symptoms","Cough and sputum production",119
+18,"JkxirwY","actual","Examinations","Full blood count",1473
+18,"Jli6WW4","actual","Examinations","Blood biochemistry",1473
+18,"Jli6WXE","actual","Examinations","Immunoserology tests",1473
+18,"Jli6WXI","actual","Examinations","Urinalysis",1473
+18,"JkxirxU","actual","Examinations","Microbiological tests (bacterial smear, culture, identification, antibiotic sensitivity test)",1473
+18,"JlAK6mI","actual","Symptoms","Edema",1473
+18,"JlAK6mg","actual","Symptoms","Palpitations",1473
+18,"JlAK6nQ","actual","Symptoms","Hematuria",1473
+18,"JlAK6nw","actual","Symptoms","Back pain",1473
+19,"JlAKyAw","actual","Procedures","Blood glucose test",393
+19,"Jli6Y7Y","actual","Examinations","Endocrine and metabolic function tests",393
+20,"JlAK6nc","actual","Symptoms","Cognitive dysfunction",454
+21,"JlAK6mc","actual","Symptoms","Chest pain",79
+22,"JlAKyA0","actual","Procedures","Aseptic technique",312
+22,"JlAKyA4","actual","Procedures","Surgical hand washing",312
+22,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",312
+22,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",312
+23,"JlAK6nc","actual","Symptoms","Cognitive dysfunction",637
+23,"JlAK6nM","actual","Symptoms","Abnormal urine output/urination",637
+24,"JlAK6mY","actual","Symptoms","Dyspnea",181
+25,"JlAKx_k","actual","Procedures","Position change, transfer",73
+25,"Jub5cSY","actual","Procedures","Skin antisepsis",73
+25,"JlAKyA0","actual","Procedures","Aseptic technique",73
+25,"JlAKyA4","actual","Procedures","Surgical hand washing",73
+25,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",73
+25,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",73
+26,"JkxirwY","actual","Examinations","Full blood count",609
+26,"Jli6WW4","actual","Examinations","Blood biochemistry",609
+26,"Jli6WXE","actual","Examinations","Immunoserology tests",609
+26,"JlAK6mI","actual","Symptoms","Edema",609
+27,"JlAKx_k","actual","Procedures","Position change, transfer",428
+27,"JkxirwY","actual","Examinations","Full blood count",428
+27,"JkxirxY","actual","Examinations","Arterial blood gas analysis",428
+27,"JkxirxA","actual","Examinations","Ultrasound",428
+27,"Jkxirw4","actual","Examinations","X-ray",428
+27,"Jli6aBM","actual","Examinations","CT",428
+27,"Jli6aBU","actual","Examinations","MRI",428
+27,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",428
+27,"JlAK6no","actual","Symptoms","Gait disturbance",428
+27,"JlAK6nw","actual","Symptoms","Back pain",428
+28,"Jli6Y7Y","actual","Examinations","Endocrine and metabolic function tests",261
+29,"JlAKx_k","actual","Procedures","Position change, transfer",77
+29,"JlAKyA4","actual","Procedures","Surgical hand washing",77
+29,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",77
+29,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",77
+30,"JlAKyAw","actual","Procedures","Blood glucose test",667
+30,"JlAK6lw","actual","Symptoms","Weight loss",667
+30,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",667
+31,"JkxirxA","actual","Examinations","Ultrasound",671
+31,"Jkxirw8","actual","Examinations","Endoscopy",671
+32,"Jub5cSY","actual","Procedures","Skin antisepsis",82
+32,"JlAKyA0","actual","Procedures","Aseptic technique",82
+32,"JlAKyA4","actual","Procedures","Surgical hand washing",82
+32,"JlAKyA8","actual","Procedures","Gowning techniques in the operating room",82
+32,"JlAKyBA","actual","Procedures","Basic sutures and suture removal",82
+32,"JkxirwY","actual","Examinations","Full blood count",82
+32,"Jli6WW4","actual","Examinations","Blood biochemistry",82
+32,"Jli6WW8","actual","Examinations","Coagulation/fibrinolysis",82
+32,"Jli6WXE","actual","Examinations","Immunoserology tests",82
+32,"Jkxirwk","actual","Examinations","Histopathology and cytology (including intraoperative rapid diagnosis)",82
+32,"JkxirxA","actual","Examinations","Ultrasound",82
+32,"Jkxirw4","actual","Examinations","X-ray",82
+32,"JlAK6ng","actual","Symptoms","Headache",82
+33,"Jub5cSY","actual","Procedures","Skin antisepsis",126
+33,"JlAKx_k","actual","Procedures","Position change, transfer",126
+34,"JlAK6lw","actual","Symptoms","Weight loss",471
+34,"JlAK6nc","actual","Symptoms","Cognitive dysfunction",471
+34,"JlAK6nk","actual","Symptoms","Skeletal muscle paralysis/muscle weakness",471
+34,"JlAK6ns","actual","Symptoms","Sensory disturbance",471
+34,"JlAK6nw","actual","Symptoms","Back pain",471
+35,"JlAKx_0","actual","Procedures","Peripheral venous catheterization",1358
+35,"JlAKyA0","actual","Procedures","Aseptic technique",1358
+35,"JkxirwY","actual","Examinations","Full blood count",1358
+35,"Jli6WW4","actual","Examinations","Blood biochemistry",1358
+35,"Jli6WW8","actual","Examinations","Coagulation/fibrinolysis",1358
+35,"JkxirxY","actual","Examinations","Arterial blood gas analysis",1358
+35,"Jli6TOw","actual","Examinations","Pleural fluid analysis",1358
+35,"JkxirxA","actual","Examinations","Ultrasound",1358
+35,"Jkxirw4","actual","Examinations","X-ray",1358
+35,"Jli6aBM","actual","Examinations","CT",1358
+35,"Jkxirw8","actual","Examinations","Endoscopy",1358
+36,"JlAKyAw","actual","Procedures","Blood glucose test",214
+36,"JkxirwY","actual","Examinations","Full blood count",214
+36,"Jli6WW4","actual","Examinations","Blood biochemistry",214
+36,"Jli6WXI","actual","Examinations","Urinalysis",214
+36,"Jli6WXQ","actual","Examinations","Stool (fecal) examination",214
+36,"Jli6Y7Y","actual","Examinations","Endocrine and metabolic function tests",214
+36,"JkxirxA","actual","Examinations","Ultrasound",214
+36,"Jli6aBM","actual","Examinations","CT",214
+36,"JlAK6l0","actual","Symptoms","Weight gain",214
+37,"Jkxirw8","actual","Examinations","Endoscopy",239
+38,"Jkxirw4","actual","Examinations","X-ray",165
+38,"JlAK6mQ","actual","Symptoms","Cough and sputum production",165
+40,"Jub5cSY","actual","Procedures","Skin antisepsis",134
