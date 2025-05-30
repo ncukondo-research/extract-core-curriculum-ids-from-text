@@ -135,6 +135,7 @@ data_Symptoms <- tidy_data |>
   group_by(record_index) |>
   summarise(
     record_index = first(record_index),
+    record_letter_count = first(record_letter_count),
     calculate_metrics(
       item_id[type == "prediction"],
       item_id[type == "actual"],
@@ -150,7 +151,6 @@ data_Symptoms_average <- data_Symptoms |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
-write.csv(data_Symptoms_average, "./results/metrics_Symptoms_average.csv", row.names = FALSE)
 
 data_Examinations <- tidy_data |>
   filter(category == "Examinations") |>
@@ -158,6 +158,7 @@ data_Examinations <- tidy_data |>
   group_by(record_index) |>
   summarise(
     record_index = first(record_index),
+    record_letter_count = first(record_letter_count),
     calculate_metrics(
       item_id[type == "prediction"],
       item_id[type == "actual"],
@@ -171,13 +172,13 @@ data_Examinations_average <- data_Examinations |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
-write.csv(data_Examinations_average, "./results/metrics_Examinations_average.csv", row.names = FALSE)
 data_Procedures <- tidy_data |>
   filter(category == "Procedures") |>
   select(record_index, item_id, type, item, record_letter_count) |>
   group_by(record_index) |>
   summarise(
     record_index = first(record_index),
+    record_letter_count = first(record_letter_count),
     calculate_metrics(
       item_id[type == "prediction"],
       item_id[type == "actual"],
@@ -191,18 +192,18 @@ data_Procedures_average <- data_Procedures |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
-write.csv(data_Procedures_average, "./results/metrics_Procedures_average.csv", row.names = FALSE)
 
 # metrics_average,metrics_Symptoms_average,
-# metrics_Examinations_average, metrics_Procedures_averageについてラベルをつけ縦重ねにしてmetrics_all_averageを作成
+# metrics_Examinations_average, metrics_Procedures_averageについて
+# ラベルをつけ縦重ねにしてmetrics_all_averageを作成
 # indexは、それぞれ"all", "Symptoms", "Examinations", "Procedures"とする
 metrics_all_average <- bind_rows(
-  metrics_average |> mutate(index = "all"),
-  data_Symptoms_average |> mutate(index = "Symptoms"),
-  data_Examinations_average |> mutate(index = "Examinations"),
-  data_Procedures_average |> mutate(index = "Procedures")
+    metrics_average |> mutate(index = "all"),
+    data_Symptoms_average |> mutate(index = "Symptoms"),
+    data_Examinations_average |> mutate(index = "Examinations"),
+    data_Procedures_average |> mutate(index = "Procedures")
   ) |>
-  select(-record_index, -record_letter_count) |>
+  select(-record_index) |>
   relocate(index, .before = 1)
 # Save metrics_all_average to CSV
 write.csv(metrics_all_average, "./results/metrics_all_average.csv", row.names = FALSE)
