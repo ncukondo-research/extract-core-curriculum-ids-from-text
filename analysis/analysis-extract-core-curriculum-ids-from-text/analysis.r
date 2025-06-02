@@ -40,6 +40,12 @@ calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
   union <- length(union(prediction_set, actual_set))
   jaccard <- ifelse(union == 0, NA, intersection / union)
 
+  # Cohen's kappa calculation
+  total <- tp + tn + fp + fn
+  po <- accuracy
+  pe <- (((tp + fp) * (tp + fn)) + ((fn + tn) * (fp + tn))) / (total * total)
+  kappa <- ifelse((1 - pe) == 0, NA, (po - pe) / (1 - pe))
+
   tibble::tibble(
     accuracy = accuracy,
     precision = precision,
@@ -47,7 +53,8 @@ calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
     f1 = f1,
     sensitivity = sensitivity,
     specificity = specificity,
-    jaccard = jaccard
+    jaccard = jaccard,
+    kappa = kappa
   )
 }
 

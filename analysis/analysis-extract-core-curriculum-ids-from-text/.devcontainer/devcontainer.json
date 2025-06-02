@@ -1,5 +1,5 @@
 {
-  "name": "${localWorkspaceFolderBasename}",
+  "name": "extract-core-curriculum-ids-from-text",
   "build":{
     "dockerfile": "Dockerfile",
     "context": ".."
@@ -8,7 +8,7 @@
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "mounts": [
-    "source=renv-cache-${localWorkspaceFolderBasename},target=/home/rstudio/.local/share/renv/cache,type=volume"
+    "source=renv-cache,target=/home/rstudio/.local/share/renv/cache,type=volume"
   ],
   "remoteEnv": {
     // Explicitly specify the cache directory used by renv
