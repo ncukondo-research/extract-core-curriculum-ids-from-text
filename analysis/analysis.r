@@ -1,5 +1,5 @@
 # Install and load necessary packages
-if (!require("pacman")) install.packages("pacman")
+if (!require("pacman", quietly = TRUE)) install.packages("pacman")
 pacman::p_load(dplyr, purrr, caret, tidyr, ggplot2, svglite, tibble)
 
 # Function to convert item_id string to set
@@ -154,12 +154,12 @@ data_Symptoms <- tidy_data |>
 
 write.csv(data_Symptoms, "./results/metrics_Symptoms.csv", row.names = FALSE)
 
-data_Symptoms_average <- data_Symptoms |>
+data_symptoms_average <- data_Symptoms |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 
-data_Examinations <- tidy_data |>
+data_examinations <- tidy_data |>
   filter(category == "Examinations") |>
   select(record_index, item_id, type, item, record_letter_count) |>
   group_by(record_index) |>
@@ -174,12 +174,16 @@ data_Examinations <- tidy_data |>
     prediction = paste(item[type == "prediction"], collapse = ","),
     actual = paste(item[type == "actual"], collapse = ","),
   )
-write.csv(data_Examinations, "./results/metrics_Examinations.csv", row.names = FALSE)
-data_Examinations_average <- data_Examinations |>
+write.csv(
+  data_examinations,
+  "./results/metrics_Examinations.csv",
+  row.names = FALSE
+)
+data_examinations_average <- data_examinations |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
-data_Procedures <- tidy_data |>
+data_procedures <- tidy_data |>
   filter(category == "Procedures") |>
   select(record_index, item_id, type, item, record_letter_count) |>
   group_by(record_index) |>
@@ -194,60 +198,100 @@ data_Procedures <- tidy_data |>
     prediction = paste(item[type == "prediction"], collapse = ","),
     actual = paste(item[type == "actual"], collapse = ","),
   )
-write.csv(data_Procedures, "./results/metrics_Procedures.csv", row.names = FALSE)
-data_Procedures_average <- data_Procedures |>
+write.csv(
+  data_procedures,
+  "./results/metrics_Procedures.csv",
+  row.names = FALSE
+)
+data_procedures_average <- data_procedures |>
   select(-prediction, -actual) |>
   summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
   mutate(record_index = "average")
 
-# metrics_average,metrics_Symptoms_average,
-# metrics_Examinations_average, metrics_Procedures_averageについて
-# ラベルをつけ縦重ねにしてmetrics_all_averageを作成
-# indexは、それぞれ"all", "Symptoms", "Examinations", "Procedures"とする
+# For metrics_average, metrics_Symptoms_average,
+# metrics_Examinations_average, and metrics_Procedures_average,
+# add a label and stack them vertically to create metrics_all_average.
+# The index should be "all", "Symptoms", "Examinations",
+# and "Procedures" respectively.
 metrics_all_average <- bind_rows(
     metrics_average |> mutate(index = "all"),
-    data_Symptoms_average |> mutate(index = "Symptoms"),
-    data_Examinations_average |> mutate(index = "Examinations"),
-    data_Procedures_average |> mutate(index = "Procedures")
+    data_symptoms_average |> mutate(index = "Symptoms"),
+    data_examinations_average |> mutate(index = "Examinations"),
+    data_procedures_average |> mutate(index = "Procedures")
   ) |>
   select(-record_index) |>
   relocate(index, .before = 1)
 # Save metrics_all_average to CSV
-write.csv(metrics_all_average, "./results/metrics_all_average.csv", row.names = FALSE)
+write.csv(
+  metrics_all_average,
+  "./results/metrics_all_average.csv",
+  row.names = FALSE
+)
 
-# Calculate mean, standard deviation, min, max, and 95% confidence interval for letter_count from metrics_per_record and store as a dataframe
+# Calculate mean, sd, min, max, and 95% CI for letter_count
 letter_count_summary <- metrics_per_record |>
   summarise(
     mean_letter_count = mean(record_letter_count, na.rm = TRUE),
     sd_letter_count = sd(record_letter_count, na.rm = TRUE),
     min_letter_count = min(record_letter_count, na.rm = TRUE),
     max_letter_count = max(record_letter_count, na.rm = TRUE),
-    ci_lower = mean(record_letter_count, na.rm = TRUE) - qt(0.975, df = n() - 1) * (sd(record_letter_count, na.rm = TRUE) / sqrt(n())),
-    ci_upper = mean(record_letter_count, na.rm = TRUE) + qt(0.975, df = n() - 1) * (sd(record_letter_count, na.rm = TRUE) / sqrt(n()))
+    ci_lower = mean(record_letter_count, na.rm = TRUE) -
+      qt(0.975, df = n() - 1) *
+      (sd(record_letter_count, na.rm = TRUE) / sqrt(n())),
+    ci_upper = mean(record_letter_count, na.rm = TRUE) +
+      qt(0.975, df = n() - 1) *
+      (sd(record_letter_count, na.rm = TRUE) / sqrt(n()))
   )
+
 # Save letter_count_summary to CSV
-write.csv(letter_count_summary, "./results/letter_count_summary.csv", row.names = FALSE)
+write.csv(
+  letter_count_summary,
+  "./results/letter_count_summary.csv",
+  row.names = FALSE
+)
+
 # Plot letter_count
-letter_count_plot <- ggplot(metrics_per_record, aes(x = record_letter_count)) +
-  geom_histogram(binwidth = 100, fill = "blue", color = "black", alpha = 0.7) +
-  labs(title = "Distribution of Record Letter Count",
-       x = "Record Letter Count",
-       y = "Frequency") +
+letter_count_plot <- ggplot(
+  metrics_per_record,
+  aes(x = record_letter_count)
+) +
+  geom_histogram(
+    binwidth = 100,
+    fill = "blue",
+    color = "black",
+    alpha = 0.7
+  ) +
+  labs(
+    title = "Distribution of Record Letter Count",
+    x = "Record Letter Count",
+    y = "Frequency"
+  ) +
   theme_minimal()
 
 # Save the plot
-ggsave("./results/letter_count_distribution.svg", plot = letter_count_plot, width = 10, height = 6)
+ggsave(
+  "./results/letter_count_distribution.svg",
+  plot = letter_count_plot,
+  width = 10,
+  height = 6
+)
 
-# Using metrics_per_record, calculate the correlation between letter_count and sensitivity, specificity, accuracy, precision, recall, f1, and store as a dataframe
-letter_count_correlation_results <- metrics_per_record |>
+# Correlation between letter_count and metrics
+letter_count_correlation <- metrics_per_record |>
   summarise(
     sensitivity = cor(record_letter_count, sensitivity, use = "complete.obs"),
     specificity = cor(record_letter_count, specificity, use = "complete.obs"),
     accuracy = cor(record_letter_count, accuracy, use = "complete.obs"),
     precision = cor(record_letter_count, precision, use = "complete.obs"),
     recall = cor(record_letter_count, recall, use = "complete.obs"),
+    kappa = cor(record_letter_count, kappa, use = "complete.obs"),
+    jaccard = cor(record_letter_count, jaccard, use = "complete.obs"),
     f1 = cor(record_letter_count, f1, use = "complete.obs")
   )
 
 # Save letter_count_correlation_results to CSV
-write.csv(letter_count_correlation_results, "./results/letter_count_correlation_results.csv", row.names = FALSE)
+write.csv(
+  letter_count_correlation,
+  "./results/letter_count_correlation_results.csv",
+  row.names = FALSE
+)
