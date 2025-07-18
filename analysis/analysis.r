@@ -115,10 +115,30 @@ metrics_per_record <- tidy_data |>
     actual = paste(item[type == "actual"], collapse = ",")
   )
 
-# Calculate the average values for all records
+# Calculate the average values and 95% confidence intervals for all records
 metrics_average <- metrics_per_record |>
   select(-record_index, -prediction, -actual) |>
-  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
+  summarise(
+    across(everything(), list(
+      mean = \(x) mean(x, na.rm = TRUE),
+      ci_lower = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      },
+      ci_upper = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      }
+    ))
+  ) |>
   mutate(record_index = "average")
 
 # Save metrics_per_record to CSV
@@ -155,8 +175,28 @@ data_Symptoms <- tidy_data |>
 write.csv(data_Symptoms, "./results/metrics_Symptoms.csv", row.names = FALSE)
 
 data_symptoms_average <- data_Symptoms |>
-  select(-prediction, -actual) |>
-  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
+  select(-prediction, -actual,-record_index) |>
+  summarise(
+    across(everything(), list(
+      mean = \(x) mean(x, na.rm = TRUE),
+      ci_lower = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      },
+      ci_upper = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      }
+    ))
+  ) |>
   mutate(record_index = "average")
 
 data_examinations <- tidy_data |>
@@ -180,9 +220,30 @@ write.csv(
   row.names = FALSE
 )
 data_examinations_average <- data_examinations |>
-  select(-prediction, -actual) |>
-  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
+  select(-prediction, -actual,-record_index) |>
+  summarise(
+    across(everything(), list(
+      mean = \(x) mean(x, na.rm = TRUE),
+      ci_lower = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      },
+      ci_upper = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      }
+    ))
+  ) |>
   mutate(record_index = "average")
+
 data_procedures <- tidy_data |>
   filter(category == "Procedures") |>
   select(record_index, item_id, type, item, record_letter_count) |>
@@ -204,8 +265,28 @@ write.csv(
   row.names = FALSE
 )
 data_procedures_average <- data_procedures |>
-  select(-prediction, -actual) |>
-  summarise(across(everything(), \(x) mean(x, na.rm = TRUE))) |>
+  select(-prediction, -actual,-record_index) |>
+  summarise(
+    across(everything(), list(
+      mean = \(x) mean(x, na.rm = TRUE),
+      ci_lower = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      },
+      ci_upper = \(x) {
+        n_obs <- sum(!is.na(x))
+        if (n_obs > 1) {
+          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+        } else {
+          NA
+        }
+      }
+    ))
+  ) |>
   mutate(record_index = "average")
 
 # For metrics_average, metrics_Symptoms_average,
@@ -225,6 +306,30 @@ metrics_all_average <- bind_rows(
 write.csv(
   metrics_all_average,
   "./results/metrics_all_average.csv",
+  row.names = FALSE
+)
+
+# Create formatted table with mean (95% CI) format
+metrics_formatted <- metrics_all_average |>
+  select(index, ends_with("_mean"), ends_with("_ci_lower"), ends_with("_ci_upper")) |>
+  pivot_longer(
+    cols = -index,
+    names_to = c("metric", ".value"),
+    names_pattern = "(.+)_(mean|ci_lower|ci_upper)"
+  ) |>
+  mutate(
+    formatted = sprintf("%.2f (%.2f-%.2f)", mean, ci_lower, ci_upper)
+  ) |>
+  select(index, metric, formatted) |>
+  pivot_wider(
+    names_from = metric,
+    values_from = formatted
+  )
+
+# Save formatted table to CSV
+write.csv(
+  metrics_formatted,
+  "./results/metrics_formatted.csv",
   row.names = FALSE
 )
 
