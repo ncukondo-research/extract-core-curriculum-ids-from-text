@@ -285,20 +285,31 @@ metrics_formatted <- metrics_all_average |>
     ci_upper = ifelse(metric %in% c("sensitivity", "specificity"), ci_upper * 100, ci_upper)
   ) |>
   mutate(
-    formatted = sprintf("%.2f (%.2f-%.2f)", mean, ci_lower, ci_upper)
+    formatted = ifelse(
+      metric %in% c("sensitivity", "specificity"),
+      sprintf("%.2f%% (95%% CI: %.2f-%.2f%%)", mean, ci_lower, ci_upper),
+      sprintf("%.2f (95%% CI: %.2f-%.2f)", mean, ci_lower, ci_upper)
+    )
   ) |>
   select(index, metric, formatted) |>
   pivot_wider(
     names_from = metric,
     values_from = formatted
-  )
+  ) 
 
 # Save formatted table to CSV
-write.csv(
-  metrics_formatted,
-  "./results/metrics_formatted.csv",
-  row.names = FALSE
-)
+metrics_formatted |>
+  write.csv(
+    "./results/metrics_formatted_all.csv",
+    row.names = FALSE
+  )
+
+metrics_formatted |>
+  select(index, sensitivity, specificity) |>
+  write.csv(
+    "./results/metrics_formatted_sensitivity_specificity.csv",
+    row.names = FALSE
+  )
 
 # Calculate mean, sd, min, max, and 95% CI for letter_count
 letter_count_summary <- metrics_per_record |>
