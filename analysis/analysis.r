@@ -35,6 +35,7 @@ calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
   sensitivity <- recall
   specificity <- ifelse(tn + fp == 0, 0, tn / (tn + fp))
 
+
   # Jaccard index calculation
   intersection <- length(intersect(prediction_set, actual_set))
   union <- length(union(prediction_set, actual_set))
@@ -57,6 +58,45 @@ calculate_metrics <- function(prediction_set, actual_set, all_ids_list) {
     kappa = kappa
   )
 }
+
+# Function to calculate summary statistics with 95% CI
+calculate_summary_stats <- function(data) {
+  data |>
+    summarise(
+      across(everything(), list(
+        mean = \(x) mean(x, na.rm = TRUE),
+        ci_lower = \(x) {
+          n_obs <- sum(!is.na(x))
+          if (n_obs > 1) {
+            ci_lower_val <- mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+            # Constrain to [-1, 1] for all columns except record_letter_count
+            if (cur_column() != "record_letter_count") {
+              max(ci_lower_val, -1)
+            } else {
+              ci_lower_val
+            }
+          } else {
+            NA
+          }
+        },
+        ci_upper = \(x) {
+          n_obs <- sum(!is.na(x))
+          if (n_obs > 1) {
+            ci_upper_val <- mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
+            # Constrain to [-1, 1] for all columns except record_letter_count
+            if (cur_column() != "record_letter_count") {
+              min(ci_upper_val, 1)
+            } else {
+              ci_upper_val
+            }
+          } else {
+            NA
+          }
+        }
+      ))
+    )
+}
+
 
 # Load data
 all_ids <- read.csv("./data/all-ids.csv")
@@ -115,30 +155,12 @@ metrics_per_record <- tidy_data |>
     actual = paste(item[type == "actual"], collapse = ",")
   )
 
+
+
 # Calculate the average values and 95% confidence intervals for all records
 metrics_average <- metrics_per_record |>
   select(-record_index, -prediction, -actual) |>
-  summarise(
-    across(everything(), list(
-      mean = \(x) mean(x, na.rm = TRUE),
-      ci_lower = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      },
-      ci_upper = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      }
-    ))
-  ) |>
+  calculate_summary_stats() |>
   mutate(record_index = "average")
 
 # Save metrics_per_record to CSV
@@ -176,27 +198,7 @@ write.csv(data_Symptoms, "./results/metrics_Symptoms.csv", row.names = FALSE)
 
 data_symptoms_average <- data_Symptoms |>
   select(-prediction, -actual,-record_index) |>
-  summarise(
-    across(everything(), list(
-      mean = \(x) mean(x, na.rm = TRUE),
-      ci_lower = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      },
-      ci_upper = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      }
-    ))
-  ) |>
+  calculate_summary_stats() |>
   mutate(record_index = "average")
 
 data_examinations <- tidy_data |>
@@ -220,28 +222,8 @@ write.csv(
   row.names = FALSE
 )
 data_examinations_average <- data_examinations |>
-  select(-prediction, -actual,-record_index) |>
-  summarise(
-    across(everything(), list(
-      mean = \(x) mean(x, na.rm = TRUE),
-      ci_lower = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      },
-      ci_upper = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      }
-    ))
-  ) |>
+  select(-prediction, -actual, -record_index) |>
+  calculate_summary_stats() |>
   mutate(record_index = "average")
 
 data_procedures <- tidy_data |>
@@ -266,27 +248,7 @@ write.csv(
 )
 data_procedures_average <- data_procedures |>
   select(-prediction, -actual,-record_index) |>
-  summarise(
-    across(everything(), list(
-      mean = \(x) mean(x, na.rm = TRUE),
-      ci_lower = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) - qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      },
-      ci_upper = \(x) {
-        n_obs <- sum(!is.na(x))
-        if (n_obs > 1) {
-          mean(x, na.rm = TRUE) + qt(0.975, df = n_obs - 1) * (sd(x, na.rm = TRUE) / sqrt(n_obs))
-        } else {
-          NA
-        }
-      }
-    ))
-  ) |>
+  calculate_summary_stats() |>
   mutate(record_index = "average")
 
 # For metrics_average, metrics_Symptoms_average,
@@ -316,6 +278,11 @@ metrics_formatted <- metrics_all_average |>
     cols = -index,
     names_to = c("metric", ".value"),
     names_pattern = "(.+)_(mean|ci_lower|ci_upper)"
+  ) |>
+  mutate(
+    mean = ifelse(metric %in% c("sensitivity", "specificity"), mean * 100, mean),
+    ci_lower = ifelse(metric %in% c("sensitivity", "specificity"), ci_lower * 100, ci_lower),
+    ci_upper = ifelse(metric %in% c("sensitivity", "specificity"), ci_upper * 100, ci_upper)
   ) |>
   mutate(
     formatted = sprintf("%.2f (%.2f-%.2f)", mean, ci_lower, ci_upper)
