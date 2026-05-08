@@ -76,3 +76,7 @@ type Output = {
 ## Performance Evaluation
 
 The performance of the API was evaluated using data obtained from medical settings. The evaluation data and analysis code are stored in [analysis/](analysis/).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

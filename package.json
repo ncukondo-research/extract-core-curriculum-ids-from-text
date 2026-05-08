@@ -2,6 +2,7 @@
   "name": "extract-core-curriculum-codes-from-text",
   "module": "api/index.ts",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "start": "vercel dev",
     "build-vercel": "vercel build"
