@@ -50,6 +50,8 @@ type Input = {
 }
 ```
 
+Limits: `data` may contain at most 50 items, each `content` at most 10,000 characters, and each `id` at most 100 characters. Requests with an incorrect `key` are rejected with the message `Invalid API key`.
+
 ### Output
 
 ChatGPT analyzes the `content` in the above input and extracts core curriculum codes.
