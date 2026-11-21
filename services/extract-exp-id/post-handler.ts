@@ -8,7 +8,7 @@ const handler = async (input: unknown): Promise<Output> => {
   if(!parseResult.success){
     return {
       status: "failure",
-      message: `Invalid input structure : ${parseResult.error}`
+      message: parseResult.message
     }
   }
   try{
@@ -40,7 +40,7 @@ const dummyHandler = async (input: unknown): Promise<Output> => {
   if(!parseResult.success){
     return {
       status: "failure",
-      message: `Invalid input structure : ${parseResult.error}`
+      message: parseResult.message
     }
   }
   const {key, data} = parseResult.data;
